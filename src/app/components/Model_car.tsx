@@ -68,16 +68,16 @@ type GLTFResult = GLTF & {
   animations: GLTFAction[];
 };
 
-export function Car(props: JSX.IntrinsicElements["group"]) {
-  const group = useRef<THREE.Group>();
-  const frontWheelRef = useRef<THREE.Group>();
-  const rearWheelRef = useRef<THREE.Group>();
-  const frontWheel001Ref = useRef<THREE.Group>();
-  const rearWheel001Ref = useRef<THREE.Group>();
+export function Car(props: React.JSX.IntrinsicElements["group"]) {
+  const group = useRef<THREE.Group>(null);
+  const frontWheelRef = useRef<THREE.Group>(null);
+  const rearWheelRef = useRef<THREE.Group>(null);
+  const frontWheel001Ref = useRef<THREE.Group>(null);
+  const rearWheel001Ref = useRef<THREE.Group>(null);
 
   const { nodes, materials, animations } = useGLTF(
     "/models/car.glb"
-  ) as GLTFResult;
+  ) as unknown as GLTFResult;
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {

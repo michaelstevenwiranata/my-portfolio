@@ -2,12 +2,34 @@ import React from "react";
 import { projects } from "../../../../lib/projectsData";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({
+  params: paramsPromise,
+}: PageProps): Promise<Metadata> {
+  const params = await paramsPromise;
+  const project = projects.find((p) => p.id === params.slug);
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  return {
+    title: `${project.title} | My Portfolio`,
+    description: project.description,
+  };
+}
 
 export default async function ProjectDetailPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+  params: paramsPromise,
+}: PageProps) {
+  const params = await paramsPromise;
   const project = projects.find((p) => p.id === params.slug);
 
   if (!project) {
@@ -55,16 +77,6 @@ export default async function ProjectDetailPage({
                 className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition duration-300"
               >
                 GitHub Repository
-              </a>
-            )}
-            {project.liveDemoLink && (
-              <a
-                href={project.liveDemoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-md transition duration-300"
-              >
-                Live Demo
               </a>
             )}
           </div>

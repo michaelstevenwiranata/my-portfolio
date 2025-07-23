@@ -35,7 +35,7 @@ export const projects: Project[] = [
     description:
       "A native Android application designed to help users train their cognitive functions.",
     longDescription:
-      "Cognify is a native Android application aimed at training and enhancing various user cognitive functions like memory, attention, and problem-solving. The app is built using a modern MVVM (Model-View-ViewModel) architecture and Jetpack Compose for a declarative, responsive UI. Key features include a variety of brain-training games, user progress tracking, and a clean interface. Local data persistence is managed with Room Database and SharedPreferences.",
+      "Cognify is a native Android application aimed to help people access education materials easily. The app is built using a modern MVVM (Model-View-ViewModel) architecture and Jetpack Compose for a declarative, responsive UI. Key features include a variety of brain-training games, user progress tracking, and a clean interface. Local data persistence is managed with Room Database and SharedPreferences.",
     image: "/images/cognifylogo.jpg",
     technologies: ["Kotlin", "Jetpack Compose", "MVVM", "Room DB", "Retrofit"],
     githubLink: "https://github.com/michaelstevenwiranata/cognify-android.git",

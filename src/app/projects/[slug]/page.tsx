@@ -3,15 +3,11 @@ import { projects } from "../../../../lib/projectsData";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-interface PageProps {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
 export default async function ProjectDetailPage({
   params,
-  searchParams,
-}: PageProps) {
+}: {
+  params: { slug: string };
+}) {
   const project = projects.find((p) => p.id === params.slug);
 
   if (!project) {

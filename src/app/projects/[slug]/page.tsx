@@ -1,15 +1,17 @@
-
-import React from 'react';
-import { projects } from '../../../../lib/projectsData';
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import React from "react";
+import { projects } from "../../../../lib/projectsData";
+import { notFound } from "next/navigation";
+import Link from "next/link";
 
 interface PageProps {
   params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function ProjectDetailPage({ params, searchParams }: PageProps) {
+export default async function ProjectDetailPage({
+  params,
+  searchParams,
+}: PageProps) {
   const project = projects.find((p) => p.id === params.slug);
 
   if (!project) {
@@ -19,12 +21,19 @@ export default async function ProjectDetailPage({ params, searchParams }: PagePr
   return (
     <div className="min-h-screen bg-gray-900 text-white py-16 pt-24">
       <div className="container mx-auto px-4">
-        <Link href="/#projects" className="text-blue-400 hover:underline mb-8 block">
+        <Link
+          href="/#projects"
+          className="text-blue-400 hover:underline mb-8 block"
+        >
           &larr; Back to Projects
         </Link>
         <h1 className="text-5xl font-bold text-center mb-8">{project.title}</h1>
         <div className="max-w-4xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
-          <img src={project.image} alt={project.title} className="w-full h-96 object-cover rounded-lg mb-8" />
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-96 object-cover rounded-lg mb-8"
+          />
           <p className="text-lg leading-relaxed mb-6">
             {project.longDescription || project.description}
           </p>
@@ -32,7 +41,10 @@ export default async function ProjectDetailPage({ params, searchParams }: PagePr
             <h3 className="text-2xl font-semibold mb-2">Technologies Used:</h3>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
-                <span key={tech} className="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">
+                <span
+                  key={tech}
+                  className="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm"
+                >
                   {tech}
                 </span>
               ))}

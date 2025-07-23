@@ -4,12 +4,12 @@ import { projects } from '../../../../lib/projectsData';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
-type ProjectDetailPageProps = {
-  params: { slug: string }
-  searchParams?: { [key: string]: string | string[] | undefined }
+interface PageProps {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function ProjectDetailPage({ params, searchParams }: ProjectDetailPageProps) {
+export default async function ProjectDetailPage({ params, searchParams }: PageProps) {
   const project = projects.find((p) => p.id === params.slug);
 
   if (!project) {
